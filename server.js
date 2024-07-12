@@ -47,12 +47,12 @@ app.post('/register', async (req, res) => {
     //user's name and password
     await newUser.save();
 
-    clientName = username;
-    clientFirstName = firstname;
-    clientLastName = lastname;
-    clientEmail = email;
-    clientMobileNumber = mobileNumber;
-    clientPassword = password;
+    const clientName = username;
+    const clientFirstName = firstname;
+    const clientLastName = lastname;
+    const clientEmail = email;
+    const clientMobileNumber = mobileNumber;
+    const clientPassword = password;
     
     console.log(
       `Username: ${ clientName}\n First Name: ${ clientFirstName}\n Last Name: ${ clientLastName}\n Email: ${ clientEmail}\n Mobile Number ${ clientMobileNumber}\n Password: ${ clientPassword}`)
