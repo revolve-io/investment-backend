@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require("body-parser")
 const mongoose = require('mongoose');
 const User = require('./Model/user.model'); // Import user model
+const cors = require('cors'); // optional for enabling CORS
 const bcrypt = require('bcrypt'); // for password hashing
 const jwt = require('jsonwebtoken'); // for generating tokens
 
@@ -25,6 +26,7 @@ mongoose.connect(connectionURL)
 //JSON Middleware
 app.use(express.json()); // Parse incoming JSON data
 //bodyparser middleware
+app.use(cors()); // enable CORS (optional)
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // Routes
@@ -53,9 +55,6 @@ app.post('/register', async (req, res) => {
     const clientEmail = email;
     const clientMobileNumber = mobileNumber;
     const clientPassword = password;
-    
-    console.log(
-      `Username: ${ clientName}\n First Name: ${ clientFirstName}\n Last Name: ${ clientLastName}\n Email: ${ clientEmail}\n Mobile Number ${ clientMobileNumber}\n Password: ${ clientPassword}`)
 
     res.status(201).json({ message: 'User created successfully' });
   } catch (err) {
