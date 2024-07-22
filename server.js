@@ -49,14 +49,16 @@ app.post('/register', async (req, res) => {
     //user's name and password
     await newUser.save();
 
-    const clientName = username;
-    const clientFirstName = firstname;
-    const clientLastName = lastname;
-    const clientEmail = email;
-    const clientMobileNumber = mobileNumber;
-    const clientPassword = password;
+    const clientData = {
+      clientName: username,
+      clientFirstName: firstname,
+      clientLastName: lastname,
+      clientEmail: email,
+      clientMobileNumber: mobileNumber,
+      clientPassword: password
+    };
 
-    res.status(201).json({ message: 'User created successfully' });
+    res.status(201).json([{ message: 'User created successfully' }, {clientData}]);
   } catch (err) {
     console.error(err);
     res.status(500).json({ message: 'Error creating user' });
