@@ -29,11 +29,6 @@ app.use(express.json()); // Parse incoming JSON data
 app.use(cors()); // enable CORS (optional)
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// Routes
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-}) //Home Route
-
 app.post('/register', async (req, res) => {
   try {
     const { username, firstname, lastname, email, mobileNumber, password } = req.body;
