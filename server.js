@@ -44,7 +44,7 @@ app.post('/register', async (req, res) => {
     //user's name and password
     await newUser.save();
 
-    const clientData = {
+      const clientData = {
       clientName: username,
       clientFirstName: firstname,
       clientLastName: lastname,
@@ -84,6 +84,10 @@ app.post('/login', async (req, res) => {
     res.status(500).json({ message: 'Error logging in' });
   }
 });
+
+app.get('/',(req, res, clientData) => {
+  res.json({clientData});
+})
 
 app.listen(port, () => console.log(`Server listening on port ${port}`));
 
